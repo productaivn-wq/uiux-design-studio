@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SlideWright StageShow Embed</title>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      [data-stage-ui="true"] * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+    .slide {
+      padding: clamp(40px, 5vh, 80px) clamp(48px, 5vw, 120px);
+    }
+    .slide-surface {
+      padding: clamp(24px, 2.5vw, 48px);
+      border-radius: 24px;
+    }
+  </style>
+</head>
+<body>
+  <section id="slide-stage-template" class="slide">
+    <div class="slide-surface">
+      <div style="font-size: clamp(38px, 3.4vw, 60px); font-weight: 700; margin-bottom: 0.6em;">Live Product Stage</div>
+      <div class="ss-stage" data-stage-ui="true" data-paused="false" style="position: relative; width: 720px; height: 420px; overflow: hidden; border-radius: 12px;"></div>
+    </div>
+  </section>
+  <script>
+    (() => {
+      const stage = document.querySelector('[data-stage-ui="true"]');
+      if (!stage) return;
+      const io = new IntersectionObserver(([entry]) => {
+        stage.setAttribute('data-paused', String(!entry.isIntersecting));
+      }, { threshold: 0.5 });
+      io.observe(stage);
+    })();
+  </script>
+
+<noscript><div class="offline-svg-failover"><svg width="400" height="80" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="80" fill="#1e293b"/><text x="20" y="45" fill="#f8fafc" font-size="13">Offline SVG Failover (GW-CHART-FAILOVER-01)</text></svg></div></noscript>
+</body>
+</html>

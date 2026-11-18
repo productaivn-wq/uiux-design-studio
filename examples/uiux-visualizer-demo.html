@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX Reconstruction Sandbox: Incident Queue Header & Filter De-Cluttering</title>
+  <style>
+    :root {
+      --bg: #0F172A;
+      --card-bg: #1E293B;
+      --accent: #D4AF37;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.12);
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .title { font-size: 20px; font-weight: 700; color: var(--accent); margin: 0; }
+    .badge {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      background: var(--card-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .metric-value { font-size: 24px; font-weight: 800; color: var(--accent); }
+    .metric-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="title">UI/UX Reconstruction Sandbox: Incident Queue Header & Filter De-Cluttering</h1>
+    <span class="badge">UIUXProMax + DataAnalysisKit</span>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-value">24 &rarr; &le; 8</div>
+      <div class="metric-label">Visible Controls (Miller's Ceiling)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">240px &rarr; 88px</div>
+      <div class="metric-label">Vertical Footprint Reduction</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">10.0 &rarr; 1.8</div>
+      <div class="metric-label">Cognitive Friction Score</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">#1 Proposal 1: Unified Luxury Command Strip</div>
+      <div class="metric-label">MCDA Recommended Architecture</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Proposals Multi-Criteria Evaluation (MCDA)</h3>
+    <pre style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 13px;">[
+  {
+    "id": "P1",
+    "name": "Proposal 1: Unified Luxury Command Strip",
+    "description": "Dense, 2-tier fixed toolbar (88px). Tier 1: Search + Preset Segmented Controls. Tier 2: Status chips with count badges.",
+    "archetype": "Segmented Command Strip",
+    "target_height_px": 88,
+    "advantage": "Zero sub-menus, 100% 1-click filter velocity, 63% vertical space reclaimed.",
+    "scores": {
+      "screen_economy": 8.5,
+      "cognitive_calm": 9.0,
+      "triage_velocity": 9.5,
+      "brand_coherence": 9.2,
+      "implementation_risk": 9.5
+    },
+    "compositeScore": 9.08,
+    "scoreBreakdown": {
+      "screen_economy": {
+        "raw": 8.5,
+        "weight": 0.25,
+        "weighted": 2.125
+      },
+      "cognitive_calm": {
+        "raw": 9.0,
+        "weight": 0.25,
+        "weighted": 2.25
+      },
+      "triage_velocity": {
+        "raw": 9.5,
+        "weight": 0.25,
+        "weighted": 2.375
+      },
+      "brand_coherence": {
+        "raw": 9.2,
+        "weight": 0.15,
+        "weighted": 1.38
+      },
+      "implementation_risk": {
+        "raw": 9.5,
+        "weight": 0.1,
+        "weighted": 0.95
+      }
+    },
+    "rank": 1,
+    "marginOverRunnerUp": 0.58
+  },
+  {
+    "id": "P2",
+    "name": "Proposal 2: Progressive Filter Drawer / Popover",
+    "description": "Ultra-minimal 1-tier header (44px) with Search and an 'All Filters (N)' button triggering a right-side slide-over drawer.",
+    "archetype": "Off-canvas Drawer",
+    "target_height_px": 44,
+    "advantage": "Maximum screen real estate, cleanest initial view for executive presentation.",
+    "scores": {
+      "screen_economy": 9.8,
+      "cognitive_calm": 9.5,
+      "triage_velocity": 6.0,
+      "brand_coherence": 9.5,
+      "implementation_risk": 7.5
+    },
+    "compositeScore": 8.5,
+    "scoreBreakdown": {
+      "screen_economy": {
+        "raw": 9.8,
+        "weight": 0.25,
+        "weighted": 2.45
+      },
+      "cognitive_calm": {
+        "raw": 9.5,
+        "weight": 0.25,
+        "weighted": 2.375
+      },
+      "triage_velocity": {
+        "raw": 6.0,
+        "weight": 0.25,
+        "weighted": 1.5
+      },
+      "brand_coherence": {
+        "raw": 9.5,
+        "weight": 0.15,
+        "weighted": 1.425
+      },
+      "implementation_risk": {
+        "raw": 7.5,
+        "weight": 0.1,
+        "weighted": 0.75
+      }
+    },
+    "rank": 2
+  },
+  {
+    "id": "P3",
+    "name": "Proposal 3: Dual-Axis Command Cockpit",
+    "description": "Vertical left rail for persistent taxonomy filters (Model, Status, Priority) paired with a compact top bar for search.",
+    "archetype": "Faceted 2-Pane Cockpit",
+    "target_height_px": 44,
+    "advantage": "High visibility of deep facets for desktop power users.",
+    "scores": {
+      "screen_economy": 7.0,
+      "cognitive_calm": 8.0,
+      "triage_velocity": 8.8,
+      "brand_coherence": 8.5,
+      "implementation_risk": 6.5
+    },
+    "compositeScore": 7.88,
+    "scoreBreakdown": {
+      "screen_economy": {
+        "raw": 7.0,
+        "weight": 0.25,
+        "weighted": 1.75
+      },
+      "cognitive_calm": {
+        "raw": 8.0,
+        "weight": 0.25,
+        "weighted": 2.0
+      },
+      "triage_velocity": {
+        "raw": 8.8,
+        "weight": 0.25,
+        "weighted": 2.2
+      },
+      "brand_coherence": {
+        "raw": 8.5,
+        "weight": 0.15,
+        "weighted": 1.275
+      },
+      "implementation_risk": {
+        "raw": 6.5,
+        "weight": 0.1,
+        "weighted": 0.65
+      }
+    },
+    "rank": 3
+  }
+]</pre>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "name": "ProductArchitectureKit",
+  "version": "1.1.19",
+  "description": "Enterprise Product Architecture & UI/UX Governance Engine: executes the 6-Phase IPO Pipeline across the 5 Domains (Truth, Logic, Perception, Reality, Outcomes) and enforces Layer 0 Macro/Meso/Micro/Meta Laws via LangGraph StateGraph, Pydantic IPO schemas, PromptStore SOPs, and deterministic mechanical code linting (P=1).",
+  "triggers": {
+    "keywords": [
+      "product",
+      "architecture",
+      "kit",
+      "productarchitecturekit"
+    ],
+    "slash_commands": [
+      "/ProductArchitectureKit"
+    ],
+    "intent_patterns": [
+      "execute productarchitecturekit",
+      "run productarchitecturekit workflow",
+      "orchestrate friction-budgets"
+    ]
+  },
+  "capabilities": [
+    "friction-budgets",
+    "the-reversibility-rule",
+    "state-persistence",
+    "global-ontology",
+    "gestalt-bounding",
+    "latency-budgets",
+    "phase-1",
+    "phase-2",
+    "phase-3",
+    "phase-4",
+    "phase-5",
+    "phase-6",
+    "typography-governance-contract"
+  ],
+  "entry_points": {
+    "main_script": "scripts/query_design_intelligence.py",
+    "cli": ""
+  },
+  "mcp_transport": "native",
+  "requires_cdp": false
+}

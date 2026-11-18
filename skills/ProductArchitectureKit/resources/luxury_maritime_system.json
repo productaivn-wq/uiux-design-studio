@@ -1,0 +1,41 @@
+{
+  "system": "Luxury Maritime Atelier",
+  "domain": "Domain 3 (Perception) & Domain 4 (Reality)",
+  "originProject": "Luxury Maritime Reference Platform",
+  "version": "1.0.0",
+  "crystallizedAt": "2026-10-03",
+  "laws": {
+    "macro": {
+      "dualUiSplit": "80% Deck 1-Tap Mobile (Captain/Crew/Tech) vs 20% Desktop Governance (OD/Chief Accountant/BOD)",
+      "frictionBudget": "Vessel defect triage completed in <= 3 taps on mobile deck mode"
+    },
+    "meso": {
+      "ruleOfSix": "Maximum 6 visible columns per boat fleet table; expand via card drawer for full technical dossier",
+      "hicksLaw": "1 primary CTA per screen (e.g. 'Báo Cáo Sự Cố' on mobile deck, 'Duyệt Chi Trả' in finance drawer)"
+    },
+    "micro": {
+      "fittsLaw": ">= 48x48px touch targets for mobile deck operations",
+      "gridRhythm": "8pt base grid (mod 8 == 0 or 4px micro-step)",
+      "palette": {
+        "canvasIvory": "#F4F2ED",
+        "cardIvory": "#FFFEFB",
+        "marineNavy": "#17212C",
+        "bronzeGold": "#8A6D3B",
+        "champagneGold": "#B9A57F",
+        "overdueCrimson": "#962D22",
+        "inServiceEmerald": "#1B8A5A"
+      },
+      "typography": {
+        "editorial": "'Cormorant Garamond', serif",
+        "body": "'Be Vietnam Pro', sans-serif",
+        "mono": "'JetBrains Mono', monospace"
+      }
+    },
+    "meta": {
+      "wcagContrast": ">= 4.5:1 optical contrast ratio in both daytime ivory and nighttime marine navy modes",
+      "flsVipShield": "Sensitive owner PII (phone, villa address, passport) masked via token #2A2824 / #E4C09F for field contractors and crew",
+      "brandIntegrity": "Zero duplicate brand text rendered adjacent to official wordmark logo"
+    }
+  },
+  "tokenAssetPath": "skills/UIUXProMax/templates/base/luxury_maritime_tokens.css"
+}

@@ -1,0 +1,171 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "schemaVersion": "od-design-system-project/v1",
+  "name": "starter-templates",
+  "world": "custom",
+  "color": {
+    "surface": {
+      "canvas": {
+        "$type": "color",
+        "$value": "oklch(16% 0.015 250)"
+      },
+      "card": {
+        "$type": "color",
+        "$value": "oklch(22% 0.02 250)"
+      },
+      "card_elevated": {
+        "$type": "color",
+        "$value": "oklch(26% 0.025 250)"
+      },
+      "sidebar": {
+        "$type": "color",
+        "$value": "oklch(14% 0.015 250)"
+      },
+      "header": {
+        "$type": "color",
+        "$value": "oklch(16% 0.015 250 / 0.95)"
+      },
+      "backdrop": {
+        "$type": "color",
+        "$value": "oklch(10% 0.01 250 / 0.75)"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "oklch(96% 0.005 250)"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "oklch(80% 0.015 250)"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "oklch(65% 0.02 250)"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "oklch(16% 0.015 250)"
+      }
+    },
+    "accent": {
+      "primary": {
+        "$type": "color",
+        "$value": "oklch(75% 0.16 210)"
+      },
+      "light": {
+        "$type": "color",
+        "$value": "oklch(85% 0.12 210)"
+      },
+      "glow": {
+        "$type": "color",
+        "$value": "oklch(75% 0.16 210 / 0.15)"
+      }
+    },
+    "state": {
+      "danger": {
+        "$type": "color",
+        "$value": "oklch(55% 0.22 25)"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "oklch(68% 0.16 150)"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "oklch(78% 0.18 70)"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$type": "color",
+        "$value": "oklch(28% 0.02 250)"
+      },
+      "card": {
+        "$type": "color",
+        "$value": "oklch(32% 0.025 250)"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "oklch(75% 0.16 210 / 0.45)"
+      }
+    }
+  },
+  "typography": {
+    "fonts": {
+      "editorial": {
+        "$type": "fontFamily",
+        "$value": "'Plus Jakarta Sans', -apple-system, sans-serif"
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": "'Plus Jakarta Sans', -apple-system, sans-serif"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "'JetBrains Mono', monospace"
+      }
+    },
+    "scale": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "0.75rem"
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "0.875rem"
+      },
+      "base": {
+        "$type": "dimension",
+        "$value": "1.000rem"
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "1.125rem"
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "1.250rem"
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "1.500rem"
+      },
+      "3xl": {
+        "$type": "dimension",
+        "$value": "1.875rem"
+      },
+      "4xl": {
+        "$type": "dimension",
+        "$value": "2.250rem"
+      }
+    }
+  },
+  "shape": {
+    "none": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  },
+  "spacing": {}
+}

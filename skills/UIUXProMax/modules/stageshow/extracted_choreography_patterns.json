@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "governance_gate": "GW-LEGALOPS-TRADE-DRESS-01",
+  "policy": "Zero third-party commercial brand UI / trade dress vendored; generic choreography mechanics distilled cleanly.",
+  "patterns": [
+    {
+      "id": "tabular-formula-ripple",
+      "source_study": "excel",
+      "mechanic": "Marquee cell range drag + formula bar type + delayed aggregate cell Roll/Count ripple"
+    },
+    {
+      "id": "canvas-multiplayer-follow",
+      "source_study": "figma",
+      "mechanic": "60Hz Follow spring selection bounds + property inspector sync + named collaborator pointer"
+    },
+    {
+      "id": "quick-look-spacebar-sheet",
+      "source_study": "finder",
+      "mechanic": "Row focus + Keycaps Spacebar trigger + origin-scaled preview modal over dimmed list"
+    },
+    {
+      "id": "frosted-backdrop-elevation",
+      "source_study": "finder-glass",
+      "mechanic": "Multi-layer backdrop-filter blur(20px) + 1px specular inset rim over saturated ground"
+    },
+    {
+      "id": "hover-action-undo-toast",
+      "source_study": "gmail",
+      "mechanic": "Row-hover inline action reveal + Collapse slot close + reversible Undo Toast with timer"
+    },
+    {
+      "id": "drag-to-create-timeslot",
+      "source_study": "google-calendar",
+      "mechanic": "Pointer-preserved vertical slot drag (`cursor: preserve`) + anchored quick-create Popover"
+    },
+    {
+      "id": "treewalker-caret-comment",
+      "source_study": "google-docs",
+      "mechanic": "Character-accurate TreeWalker Range selection (`a.caret`) + margin comment Pin & thread"
+    },
+    {
+      "id": "bubble-morph-receipt-glide",
+      "source_study": "imessage",
+      "mechanic": "Composer word lift into Thread subpixel FLIP upward glide + Delivered->Read Receipt morph"
+    },
+    {
+      "id": "command-palette-cmd-k",
+      "source_study": "linear",
+      "mechanic": "Keycaps `cmd+k` HUD + instant filtered Menu + keyboard highlight + status badge Roll"
+    },
+    {
+      "id": "slash-block-transform",
+      "source_study": "notion",
+      "mechanic": "Inline `/` trigger Popover + in-place block morphology Swap without vertical baseline jump"
+    },
+    {
+      "id": "filmstrip-canvas-guides",
+      "source_study": "powerpoint",
+      "mechanic": "Thumbnail rail selection + smart center-alignment guide hairlines during object drag"
+    },
+    {
+      "id": "launcher-fuzzy-clipboard",
+      "source_study": "raycast",
+      "mechanic": "Centered floating launcher with gutters + live prefix filter + instant preview pane Swap"
+    },
+    {
+      "id": "thread-reaction-corner-pill",
+      "source_study": "slack",
+      "mechanic": "Hover toolbar + corner-anchored reaction pill scaling from bubble corner + side-drawer Collapse"
+    },
+    {
+      "id": "persistent-transport-scrub",
+      "source_study": "spotify",
+      "mechanic": "Dark surface elevation (`--ss-raised`, 0 glow) + continuous bottom playback Meter scrub"
+    },
+    {
+      "id": "double-check-wallpaper-thread",
+      "source_study": "telegram",
+      "mechanic": "Patterned quiet ground + compact bubble tail run grouping + animated SVG dual-check draw"
+    },
+    {
+      "id": "typeahead-thumbnail-history",
+      "source_study": "wikipedia",
+      "mechanic": "Search Field dropdown with thumbnail Row leads + causal Back-button history restoration"
+    }
+  ]
+}

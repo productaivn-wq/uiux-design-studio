@@ -1,0 +1,241 @@
+/**
+ * ============================================================================
+ * UIUXProMax Spatial Layout Engine & Primitives
+ * Module: spatial_layout_primitives.css
+ * Version: 1.3.0
+ * Crystallized from Luxury Maritime CRM (@atelier/design-system)
+ * 
+ * Enforces:
+ * 1. Component Layout Agnosticism (Zero Outer Margins on Reusable Components)
+ * 2. Anti-Blowout Defensive Invariant (min-inline-size: 0; min-width: 0;)
+ * 3. Primitives: Stack, Cluster, Split, Grid, Subgrid, Frame, Container-Slot
+ * 4. CSS Subgrid Multi-Tier Alignment
+ * ============================================================================
+ */
+
+:root {
+  /* Spatial Layout Gutter Tokens (8pt / 4pt Discrete Rhythm) */
+  --tsy-layout-max-width:     1600px;
+  --tsy-layout-sidebar-width: 280px;
+  --tsy-layout-drawer-width:  480px;
+
+  --tsy-gutter-page:          32px; /* var(--tsy-space-8) */
+  --tsy-gutter-layout:        24px; /* var(--tsy-space-6) */
+  --tsy-gutter-panel:         16px; /* var(--tsy-space-4) */
+  --tsy-gutter-nested:        8px;  /* var(--tsy-space-2) */
+  --tsy-gutter-compact:       4px;  /* var(--tsy-space-1) */
+
+  /* Column Division Ratios (Prevents fractional subpixel jitter) */
+  --tsy-split-golden:         61.8% 38.2%;
+  --tsy-split-main-side:      70% 30%;
+  --tsy-split-thirds:         repeat(3, minmax(0, 1fr));
+}
+
+/* ==========================================================================
+   1. Universal Defensive Isolation & Anti-Blowout Reset
+   ========================================================================== */
+.tsy-slot,
+.tsy-stack > *,
+.tsy-cluster > *,
+.tsy-split > *,
+.tsy-grid > *,
+.tsy-frame > *,
+.tsy-subgrid-rows > *,
+.tsy-subgrid-cols > * {
+  min-inline-size: 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Zero outer margin enforcement on nested primitives */
+.tsy-stack > *,
+.tsy-cluster > *,
+.tsy-split > *,
+.tsy-grid > * {
+  margin: 0;
+}
+
+/* ==========================================================================
+   2. Primitive: Stack (Vertical Cadence Distribution)
+   ========================================================================== */
+.tsy-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--tsy-gutter-panel, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tsy-stack[data-gap="none"]   { gap: 0; }
+.tsy-stack[data-gap="compact"]{ gap: var(--tsy-gutter-compact, 4px); }
+.tsy-stack[data-gap="nested"] { gap: var(--tsy-gutter-nested, 8px); }
+.tsy-stack[data-gap="panel"]  { gap: var(--tsy-gutter-panel, 16px); }
+.tsy-stack[data-gap="layout"] { gap: var(--tsy-gutter-layout, 24px); }
+.tsy-stack[data-gap="page"]   { gap: var(--tsy-gutter-page, 32px); }
+
+.tsy-stack.align-start   { align-items: flex-start; }
+.tsy-stack.align-center  { align-items: center; }
+.tsy-stack.align-end     { align-items: flex-end; }
+.tsy-stack.align-stretch { align-items: stretch; }
+
+.tsy-stack-divided > * + * {
+  border-top: 1px solid var(--tsy-border-subtle, #ebe7de);
+  padding-top: var(--tsy-gutter-panel, 16px);
+}
+
+/* ==========================================================================
+   3. Primitive: Cluster (Horizontal Flow & Tag Distribution)
+   ========================================================================== */
+.tsy-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tsy-gutter-nested, 8px);
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.tsy-cluster[data-gap="none"]   { gap: 0; }
+.tsy-cluster[data-gap="compact"]{ gap: var(--tsy-gutter-compact, 4px); }
+.tsy-cluster[data-gap="nested"] { gap: var(--tsy-gutter-nested, 8px); }
+.tsy-cluster[data-gap="panel"]  { gap: var(--tsy-gutter-panel, 16px); }
+.tsy-cluster[data-gap="layout"] { gap: var(--tsy-gutter-layout, 24px); }
+
+.tsy-cluster.justify-start   { justify-content: flex-start; }
+.tsy-cluster.justify-center  { justify-content: center; }
+.tsy-cluster.justify-end     { justify-content: flex-end; }
+.tsy-cluster.justify-between { justify-content: space-between; }
+
+/* ==========================================================================
+   4. Primitive: Split (Deterministic Column Ratio Distribution)
+   ========================================================================== */
+.tsy-split {
+  display: grid;
+  gap: var(--tsy-gutter-layout, 24px);
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tsy-split[data-ratio="1-1"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tsy-split[data-ratio="2-1"] { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.tsy-split[data-ratio="1-2"] { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.tsy-split[data-ratio="3-1"] { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); }
+.tsy-split[data-ratio="1-3"] { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); }
+.tsy-split[data-ratio="golden"]    { grid-template-columns: minmax(0, 1.618fr) minmax(0, 1fr); }
+.tsy-split[data-ratio="main-side"] { grid-template-columns: minmax(0, 1fr) var(--tsy-layout-sidebar-width, 280px); }
+.tsy-split[data-ratio="side-main"] { grid-template-columns: var(--tsy-layout-sidebar-width, 280px) minmax(0, 1fr); }
+
+@media (max-width: 900px) {
+  .tsy-split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: var(--tsy-gutter-panel, 16px);
+  }
+}
+
+/* ==========================================================================
+   5. Primitive: Grid (Track Harmonization & Fluid Auto-Fit)
+   ========================================================================== */
+.tsy-grid {
+  display: grid;
+  gap: var(--tsy-gutter-panel, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tsy-grid-auto-fit-sm { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.tsy-grid-auto-fit    { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.tsy-grid-auto-fit-lg { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+
+.tsy-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tsy-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tsy-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.tsy-grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.tsy-grid-cols-12{ grid-template-columns: repeat(12, minmax(0, 1fr)); }
+
+@media (max-width: 900px) {
+  .tsy-grid-cols-2,
+  .tsy-grid-cols-3,
+  .tsy-grid-cols-4,
+  .tsy-grid-cols-6,
+  .tsy-grid-cols-12 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
+   6. Primitive: Subgrid (Multi-Tier Nested Track Synchronization)
+   ========================================================================== */
+.tsy-subgrid-card-deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-auto-rows: auto 1fr auto;
+  gap: var(--tsy-gutter-panel, 16px);
+  align-items: stretch;
+}
+
+@supports (grid-template-rows: subgrid) {
+  .tsy-subgrid-rows {
+    grid-row: span 3;
+    display: grid;
+    grid-template-rows: subgrid;
+  }
+  .tsy-subgrid-cols {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+}
+
+@supports not (grid-template-rows: subgrid) {
+  .tsy-subgrid-rows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+/* ==========================================================================
+   7. Primitive: Frame (Aspect Ratio & Pixel Bounds Containment)
+   ========================================================================== */
+.tsy-frame {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.tsy-frame[data-ratio="1-1"]  { aspect-ratio: 1 / 1; }
+.tsy-frame[data-ratio="4-3"]  { aspect-ratio: 4 / 3; }
+.tsy-frame[data-ratio="16-9"] { aspect-ratio: 16 / 9; }
+.tsy-frame[data-ratio="21-9"] { aspect-ratio: 21 / 9; }
+
+.tsy-frame > img,
+.tsy-frame > video,
+.tsy-frame > svg {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   8. Container Query Anchor & Responsive Slots (@container)
+   ========================================================================== */
+.tsy-container-slot {
+  container-type: inline-size;
+  container-name: tsyslot;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@container tsyslot (max-width: 480px) {
+  .tsy-slot-collapse-sm {
+    flex-direction: column !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .tsy-slot-hide-sm {
+    display: none !important;
+  }
+}

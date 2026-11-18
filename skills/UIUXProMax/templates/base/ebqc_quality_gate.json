@@ -1,0 +1,112 @@
+{
+  "name": "Evidence-Based Quality Control (EBQC) Gate",
+  "id": "ebqc-quality-gate",
+  "version": "1.0.0",
+  "standard": "Ivar Jacobson Use-Case 3.0 / LAYER0-STD / IL-UTS",
+  "provenance": {
+    "source": "Luxury Maritime Concierge CRM (Luxury Maritime Reference Platform)",
+    "roleOwner": "agent-quality-controller (Development-Side Chief Engineer / WCR Gatekeeper)",
+    "verifiedAt": "2026-10-07"
+  },
+  "principles": {
+    "separationOfDuties": "approver_id != author_id (2-Node Separation)",
+    "empiricalProofInvariant": "Claims require fresh terminal execution proof or off-screen framebuffer screenshots",
+    "antiMockInvariant": "Zero mock leakage; real delivery destinations and verified live endpoints",
+    "meceBoundaryInvariant": "Filesystem depth <= 3, zero desktop pollution"
+  },
+  "metrics": {
+    "evaluationAlignmentIndex": {
+      "metric": "EAI",
+      "threshold": 0.980,
+      "goldBaseline": 0.995,
+      "formula": "EAI = (Passed_Checks / Total_Checks) * Confidence_Factor"
+    }
+  },
+  "fourPillars": [
+    {
+      "pillar": "MECE Boundaries",
+      "invariant": "Filesystem depth <= 3 across 00_INBOX, 10_ACTIVE_TIMEBOUND, 20_ACTIVE_CONTINUOUS, 30_REFERENCE, 40_ARCHIVE. Zero files on Desktop."
+    },
+    {
+      "pillar": "UTOP Traceability",
+      "invariant": "100% bidirectional traceability link graph: BPMN (L3) -> Use Case (L5) -> Slices -> Tests -> Code."
+    },
+    {
+      "pillar": "Specifications Baseline",
+      "invariant": "Pydantic schema validation, strict data contracts, and zero mock leakage in production paths."
+    },
+    {
+      "pillar": "UC 3.0 Structural Compliance",
+      "invariant": "All use cases explicitly define Basic Flow (F1), Alternate Flows (Flow Alt), and Exception Loops (Flow Exc) with zero dead-ends."
+    }
+  ],
+  "fiveDomains": {
+    "domain1_truth": {
+      "focus": "Optimizes for the Human (Truth)",
+      "checks": [
+        "Primary Actor & Canonical Role Alignment",
+        "Level 1 User Goal Compliance (Active Verb Phrase)",
+        "Vertical Slices Completeness (Presentation -> DB without horizontal dead-ends)"
+      ]
+    },
+    "domain2_logic": {
+      "focus": "Optimizes for the System (Logic)",
+      "checks": [
+        "FSM State Transitions Monotonicity",
+        "Reversibility Rule (Zero logical dead-ends, 1-tap undo)",
+        "Separation of Duties (Requester != Approver)",
+        "Business Rules Engine (R1 Cost Gate >5M, R2 Margin Gate <30%, R8 50% Deposit Gate, R12 Engine Hours Watchdog)"
+      ]
+    },
+    "domain3_perception": {
+      "focus": "Optimizes for the Surface (Perception)",
+      "checks": [
+        "Layer 0 Meso Laws (Hick's Law: 1 primary CTA, Miller's Law: <=7 groups, Rule of 6)",
+        "Layer 0 Micro Laws (8pt grid tokens, touch targets >= 44x44px, Fitts's Law)",
+        "Spatial Layout Primitives (Stack, Cluster, Split, Grid, Subgrid, Frame)",
+        "Luxury Aesthetic Tokens (Linen Canvas #F4F2ED, Card #FFFEFB, Bronze Gold #8A6D3B, Navy #17212C)"
+      ]
+    },
+    "domain4_reality": {
+      "focus": "Optimizes for the Machine & Law (Reality)",
+      "checks": [
+        "End-to-end verified delivery (zero mock fallbacks)",
+        "Live headless browser execution proof (Playwright, zero window popping)",
+        "Latency Budgets (API calls > 400ms mandate skeleton shimmer)",
+        "Legal Accessibility (WCAG 2.1 AA >= 4.5:1 optical contrast)",
+        "Data Privacy (Decree 13 / GDPR PII masking via FLS VIP Shield)"
+      ]
+    },
+    "domain5_outcomes": {
+      "focus": "Optimizes for the Business (Outcomes)",
+      "checks": [
+        "Boundary robustness (negative value rejects, hull ISO format checks)",
+        "Exception recovery loops (Flow Exc)",
+        "Business Model Canvas (BMC) alignment & margin defense",
+        "Deterministic EBQC Quality Gate pass (EAI >= 0.980)"
+      ]
+    }
+  },
+  "reviewAgentTaxonomy": [
+    { "code": "AGT-01", "title": "Primary Actor & Authority Auditor", "focus": "Verifies canonical persona, credentials, and RBAC authorization role" },
+    { "code": "AGT-02", "title": "Level 1 Goal & Active Verb Auditor", "focus": "Validates active verb-phrase user goal and complete actor intention" },
+    { "code": "AGT-03", "title": "Preconditions & Trigger State Auditor", "focus": "Asserts environmental trigger, antecedent case state, and preconditions" },
+    { "code": "AGT-04", "title": "Success Guarantee (Postcondition) Auditor", "focus": "Verifies postconditions, atomic commits, and outward deliverables" },
+    { "code": "AGT-05", "title": "Minimum Guarantee & Safety Lock Auditor", "focus": "Validates atomic error rollback, safety locks, and immutable state defense" },
+    { "code": "AGT-06", "title": "Basic Flow F1 Sequential Execution Auditor", "focus": "Verifies end-to-end main success scenario actor-system step interaction" },
+    { "code": "AGT-07", "title": "Alternate Flow (Flow Alt) Branching Auditor", "focus": "Validates variant success paths, fast paths, and state convergence" },
+    { "code": "AGT-08", "title": "Exception Loop (Flow Exc) Rework Auditor", "focus": "Checks validation aborts, rework loops, and zero dead-end recovery" },
+    { "code": "AGT-09", "title": "Vertical Slices Completeness Auditor", "focus": "Asserts thin vertical end-to-end threads cutting Presentation -> DB" },
+    { "code": "AGT-10", "title": "Field-Level Security (FLS) & Shield Auditor", "focus": "Enforces IYTC VIP Data Shield and Decree 13 PII masking invariants" },
+    { "code": "AGT-11", "title": "Status-Action & Button Governance Auditor", "focus": "Validates dynamic active/disabled/hidden button states across FSM" },
+    { "code": "AGT-12", "title": "Business Rules Engine (R1..R12) Auditor", "focus": "Asserts strict enforcement of financial, margin, and milestone rules" },
+    { "code": "AGT-13", "title": "Separation of Duties (SoD) Auditor", "focus": "Enforces 2-node separation (requester != approver, surveyor != signoff)" },
+    { "code": "AGT-14", "title": "Database Schema & Entity Integrity Auditor", "focus": "Validates SQLite/PostgreSQL entity mapping, foreign keys, and audit log" },
+    { "code": "AGT-15", "title": "Playwright End-User Interaction Auditor", "focus": "Asserts realistic typing, clicking, form submission, and toast validation" },
+    { "code": "AGT-16", "title": "Video Stream EBML & Codec Auditor", "focus": "Checks VP8/Matroska container headers, 1366x768 resolution, and timing" },
+    { "code": "AGT-17", "title": "Video Size & Non-Trivial Threshold Auditor", "focus": "Guarantees physical artifact file size strictly exceeds 50,000 bytes" },
+    { "code": "AGT-18", "title": "UTOP Upstream Traceability Auditor", "focus": "Traces BPMN (L3) -> Use Case (L5) -> Slices -> Tests -> Code" },
+    { "code": "AGT-19", "title": "MECE Zone & Zero-Desktop Invariant Auditor", "focus": "Asserts physical placement in evidence/videos/ with folder depth <= 3" },
+    { "code": "AGT-20", "title": "EBQC Quality Gate & Certification Auditor", "focus": "Verifies Evidence Alignment Index (EAI >= 0.980) and zero defect sign-off" }
+  ]
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIUXProMax v2.5.0 Overdrive Template — HTML-in-Canvas Progressive WebGL Shader</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+</head>
+<body class="bg-transparent text-[var(--foreground,#141414)] antialiased p-6">
+  <!--
+    GOVERNANCE CONTRACT (RULE-L0-OVERDRIVE-SURFACE-GATE):
+    1. Must declare data-surface-mode="experience" (prohibited in Operate/Read surfaces).
+    2. Underlying DOM text and CTA buttons remain 100% native HTML (selectable, WCAG 2.1 AA, Fitts >= 44x44px).
+    3. WebGL / Canvas shader pauses via IntersectionObserver + visibilitychange and bypasses on prefers-reduced-motion: reduce.
+  -->
+  <section
+    id="overdrive-hero"
+    data-surface-mode="experience"
+    class="relative overflow-hidden rounded-xl border border-[var(--border,#d4d0c8)] bg-[var(--card,#faf9f5)] p-8"
+  >
+    <canvas
+      id="overdrive-caustics-canvas"
+      class="pointer-events-none absolute inset-0 h-full w-full opacity-25"
+      aria-hidden="true"
+    ></canvas>
+
+    <div class="relative z-10 max-w-xl space-y-4">
+      <div class="text-xs font-mono uppercase tracking-widest opacity-70">
+        Surface Mode: Experience · HTML-in-Canvas Progressive Shader
+      </div>
+      <h1 class="text-2xl font-semibold tracking-tight">
+        Selectable DOM Layer with Hardware-Gated Shader Refraction
+      </h1>
+      <p class="text-sm leading-relaxed opacity-85">
+        Inspired by DavidHDev/canvas-ui: the WebGL/Canvas plane sits strictly on a non-interactive
+        compositor layer while all typography, screen-reader landmarks, and hit targets remain native DOM elements.
+      </p>
+      <div class="pt-2">
+        <button
+          type="button"
+          class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg bg-[var(--primary,#17212C)] px-5 py-3 text-sm font-medium text-[var(--primary-foreground,#FFFEFB)] transition-transform duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98]"
+        >
+          Inspect Vessel Digital Twin
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function initGovernedOverdriveShader() {
+      const root = document.getElementById("overdrive-hero");
+      const canvas = document.getElementById("overdrive-caustics-canvas");
+      if (!root || !canvas) return;
+
+      // 1. Surface Mode Gate Check (RULE-L0-OVERDRIVE-SURFACE-GATE)
+      if (root.getAttribute("data-surface-mode") !== "experience") return;
+
+      // 2. Reduced Motion Hardware Bypass
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (reducedMotion.matches) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      let rafId = null;
+      let isOnScreen = true;
+      let t = 0;
+
+      function resize() {
+        const rect = root.getBoundingClientRect();
+        canvas.width = Math.max(1, Math.floor(rect.width * 0.5));
+        canvas.height = Math.max(1, Math.floor(rect.height * 0.5));
+      }
+
+      function renderFrame() {
+        if (!isOnScreen || document.hidden || reducedMotion.matches) {
+          rafId = null;
+          return;
+        }
+        t += 0.02;
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        const grad = ctx.createRadialGradient(
+          w * (0.5 + 0.25 * Math.cos(t)),
+          h * (0.5 + 0.25 * Math.sin(t * 0.8)),
+          8,
+          w * 0.5,
+          h * 0.5,
+          Math.max(w, h) * 0.7
+        );
+        grad.addColorStop(0, "rgba(138, 109, 59, 0.32)");
+        grad.addColorStop(1, "rgba(23, 33, 44, 0.0)");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+        rafId = window.requestAnimationFrame(renderFrame);
+      }
+
+      function syncLoop() {
+        if (!reducedMotion.matches && !document.hidden && isOnScreen && rafId === null) {
+          rafId = window.requestAnimationFrame(renderFrame);
+        } else if ((reducedMotion.matches || document.hidden || !isOnScreen) && rafId !== null) {
+          window.cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+      const observer = new IntersectionObserver(([entry]) => {
+        isOnScreen = entry.isIntersecting;
+        syncLoop();
+      });
+      observer.observe(root);
+      document.addEventListener("visibilitychange", syncLoop);
+      reducedMotion.addEventListener("change", syncLoop);
+      syncLoop();
+    })();
+  </script>
+
+<noscript><div class="offline-svg-failover"><svg width="400" height="80" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="80" fill="#1e293b"/><text x="20" y="45" fill="#f8fafc" font-size="13">Offline SVG Failover (GW-CHART-FAILOVER-01)</text></svg></div></noscript>
+</body>
+</html>

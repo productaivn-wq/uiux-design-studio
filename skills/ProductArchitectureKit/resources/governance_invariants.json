@@ -1,0 +1,26 @@
+{
+  "GW-DATA-01": {
+    "name": "Anti-Mock & Live Ground Truth Invariant",
+    "rule": "Mock or dummy demonstration data is strictly prohibited when live external endpoints exist. Dispatches must exercise verified real destinations (e.g. verified-user@example.com) with visible in-app preview modals (#mailbox-modal) and 100-round continuous regression proof."
+  },
+  "GW-HEADLESS-01": {
+    "name": "Zero-Focus-Stealing & Off-Screen Automation Invariant",
+    "rule": "Host desktop GUI automation, window popping, foreground focus grabbing, and host keystroke simulation (e.g. win32 keybd_event) are strictly prohibited on Windows. All UI and messaging automation MUST execute headlessly on a virtual display (DISPLAY=:99 via WSL2 / Xvfb) or via background daemons."
+  },
+  "GW-FALLBACK-01": {
+    "name": "Prohibited Silent Downgrade Invariant",
+    "rule": "Subsystems and adapters must fail fast and surface actionable exceptions when encountering invalid parameters or endpoint failures. Silently catching errors and falling back to deprecated, obsolete, or disruptive host GUI methods is strictly prohibited."
+  },
+  "GW-PROOF-01": {
+    "name": "Empirical Verification Proof Invariant",
+    "rule": "Completion claims for tasks, messaging dispatches, or UI changes require fresh terminal execution logs or off-screen framebuffer screenshots confirming physical delivery checkmarks (✓✓) in the current turn."
+  },
+  "GW-MCP-01": {
+    "name": "MCP Process Lifecycle Resilience Invariant",
+    "rule": "MCP servers managed by the agent harness must handle process termination gracefully without leaving orphaned OS handles or triggering unrecoverable client cache errors (exit status 0xffffffff)."
+  },
+  "GW-UIUX-STAGE-FIREWALL-01": {
+    "name": "StageShow Showcase vs. Production UI Firewall Invariant",
+    "rule": "Stage-only showcase mechanics (simulated DOM cursors <Cursor>/<MacPointer>/.ss-cursor, <Bar> skeleton ladders, 10-40% off-stage window bleed crops, fixed canvas scale transforms, and 10-16s storytelling loops) are strictly quarantined inside [data-stage-ui='true'] / .ss-stage containers and forbidden in shipped production web interfaces or SlideWright decks; conversely, semantic <h1-h6> headings are forbidden inside [data-stage-ui='true'] stages to protect the host document accessibility outline."
+  }
+}

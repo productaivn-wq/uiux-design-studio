@@ -1,0 +1,169 @@
+/* stageshow_production_primitives.css — Sovereign StageShow Production & Showcase Token Shield (v2.6.0)
+ * Governed by GW-UIUX-STAGE-FIREWALL-01:
+ *   - Universal optical/kinetic craft primitives work in both production UI and [data-stage-ui="true"].
+ *   - Stage-only chrome/cursors/bleed rules activate strictly inside .ss-stage / [data-stage-ui="true"].
+ */
+@layer stageshow {
+  :root {
+    /* 6 Canonical StageShow Launch-Film Easing Curves */
+    --ease-ss-house: cubic-bezier(0.45, 0, 0.1, 1);
+    --ease-ss-through: cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ease-ss-settle: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-ss-enter: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-ss-trip: cubic-bezier(0.34, 1.4, 0.64, 1);
+    --ease-ss-camera: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Default Look (1/9: studio-neutral) */
+    --ss-canvas: #f3f4f6;
+    --ss-surface: #ffffff;
+    --ss-chrome: #f9fafb;
+    --ss-well: #f1f5f9;
+    --ss-raised: #ffffff;
+    --ss-line: #e5e7eb;
+    --ss-line-faint: #f1f5f9;
+    --ss-text-strong: #111827;
+    --ss-text: #374151;
+    --ss-text-faint: #6b7280;
+    --ss-icon: #52525b;
+    --ss-icon-faint: #a1a1aa;
+    --ss-accent: #2563eb;
+    --ss-accent-2: #0ea5e9;
+    --ss-accent-soft: #dbeafe;
+    --ss-accent-text: #1d4ed8;
+    --ss-radius-sm: 6px;
+    --ss-radius-md: 8px;
+    --ss-radius-lg: 10px;
+    --ss-radius-window: 12px;
+    --ss-radius-pill: 999px;
+    --ss-control: 34px;
+    --ss-row: 26px;
+    --ss-shadow-hero: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 18px 42px rgba(0, 0, 0, 0.12);
+    --ss-shadow-satellite: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 12px 28px rgba(0, 0, 0, 0.16);
+    --ss-shadow-ground: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 14px rgba(0, 0, 0, 0.07);
+  }
+
+  /* 9 Curated StageShow Look Token Presets */
+  [data-ss-look="paper"] { --ss-canvas: #efe8dc; --ss-surface: #fffdf9; --ss-line: #e4dccf; --ss-accent: #9a5b25; }
+  [data-ss-look="ink-dark"] { --ss-canvas: #0b0d12; --ss-surface: #141821; --ss-raised: #1d2330; --ss-line: #262e3f; --ss-text-strong: #f9fafb; --ss-text: #d1d5db; --ss-text-faint: #9ca3af; --ss-icon: #d4d4d8; }
+  [data-ss-look="graphite"] { --ss-canvas: #18181b; --ss-surface: #27272a; --ss-raised: #3f3f46; --ss-line: #3f3f46; --ss-text-strong: #fafafa; --ss-text: #e4e4e7; }
+  [data-ss-look=" porcelain"], [data-ss-look="porcelain"] { --ss-canvas: #f8fafc; --ss-surface: #ffffff; --ss-line: #e2e8f0; --ss-accent: #0f172a; }
+  [data-ss-look="warm-stone"] { --ss-canvas: #e7e5e4; --ss-surface: #fafaf9; --ss-line: #d6d3d1; --ss-accent: #0d9488; }
+  [data-ss-look="blueprint"] { --ss-canvas: #e0ecff; --ss-surface: #ffffff; --ss-line: #bfdbfe; --ss-accent: #1d4ed8; }
+  [data-ss-look="forest-slate"] { --ss-canvas: #0f1715; --ss-surface: #16221f; --ss-raised: #1e2e2a; --ss-line: #283d38; --ss-text-strong: #ecfdf5; --ss-accent: #10b981; }
+  [data-ss-look="sandstone"] { --ss-canvas: #ebdac8; --ss-surface: #ffffff; --ss-line: #dfd2c3; --ss-accent: #b45309; }
+  [data-ss-look="mono-editorial"] { --ss-canvas: #f4f4f5; --ss-surface: #ffffff; --ss-line: #d4d4d8; --ss-accent: #18181b; }
+
+  /* Optical Cap-Height Vertical Centering */
+  .ss-btn,
+  .ss-badge,
+  .ss-pill,
+  .ss-avatar {
+    text-box: trim-both cap alphabetic;
+  }
+
+  /* Universal Collapse Accordion (grid-template-rows 0fr -> 1fr) */
+  .ss-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 260ms var(--ease-ss-settle);
+  }
+  .ss-collapse[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+  .ss-collapse__inner {
+    overflow: hidden;
+    min-block-size: 0;
+  }
+
+  /* Fixed-Envelope Discrete States (<States>) */
+  .ss-states {
+    display: inline-grid;
+    align-items: baseline;
+  }
+  .ss-states > * {
+    grid-area: 1 / 1;
+    transition: opacity 180ms var(--ease-ss-settle), transform 180ms var(--ease-ss-settle);
+  }
+  .ss-states > [data-active="false"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Crescent-Cutout Avatar Facepile (true alpha mask, zero ring clash) */
+  .ss-facepile {
+    display: inline-flex;
+    align-items: center;
+  }
+  .ss-facepile__item {
+    inline-size: 28px;
+    block-size: 28px;
+    border-radius: 999px;
+    display: inline-grid;
+    place-items: center;
+  }
+  .ss-facepile__item + .ss-facepile__item {
+    margin-inline-start: -8px;
+    -webkit-mask-image: radial-gradient(circle 16px at -6px 50%, transparent 98%, #000 100%);
+    mask-image: radial-gradient(circle 16px at -6px 50%, transparent 98%, #000 100%);
+  }
+
+  /* Dual-Layer Inverted Meter */
+  .ss-meter {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--ss-radius-pill);
+    background: var(--ss-well);
+  }
+  .ss-meter__fill {
+    inline-size: var(--ss-progress, 0%);
+    block-size: 100%;
+    background: var(--ss-accent);
+    transition: inline-size 320ms var(--ease-ss-settle);
+  }
+
+  /* Hung Currency & Unread Margin Dot (Columnar Alignment Integrity) */
+  .ss-count {
+    position: relative;
+    font-variant-numeric: tabular-nums lining-nums;
+    white-space: nowrap;
+  }
+  .ss-currency {
+    position: absolute;
+    inset-inline-end: 100%;
+    margin-inline-end: 2px;
+  }
+  .ss-unread-dot {
+    position: absolute;
+    inset-inline-start: -12px;
+    inline-size: 6px;
+    block-size: 6px;
+    border-radius: 999px;
+    background: var(--ss-accent);
+  }
+
+  /* 6px Localized Moving Track Feather Mask */
+  .ss-roll {
+    display: inline-block;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(transparent, #000 6px, #000 calc(100% - 6px), transparent);
+    mask-image: linear-gradient(transparent, #000 6px, #000 calc(100% - 6px), transparent);
+  }
+
+  /* Stage-Only Containment Shield */
+  .ss-stage,
+  [data-stage-ui="true"] {
+    position: relative;
+    overflow: hidden;
+    background: var(--ss-canvas);
+    color: var(--ss-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ss-collapse,
+    .ss-states > *,
+    .ss-meter__fill {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}

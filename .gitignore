@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+
+# Node / Frontend dependencies
+node_modules/
+.next/
+dist/
+build/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp

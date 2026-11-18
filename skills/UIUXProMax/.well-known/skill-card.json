@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "name": "UIUXProMax",
+  "version": "2.6.710",
+  "description": "Enterprise UI/UX Design Intelligence Engine, Forensic Diagnostic and Two-Stage Layer 0 Governance Gate (v2.4.0): Stage 1 Static AST/Token Linter (layer0_validator.py) + Stage 2 Headless Playwright Rendered DOM Geometry & Visual Screenshot Auditor (rendered_layout_auditor.py) across responsive + desktop viewports (360x800..1440x900) enforcing zero unintended h-scroll, zero viewport bleed, zero critical landmark ellipsis truncation, mandatory lining-nums on display serifs, interactive overlap collision detection, and flex-wrap collapse guards.",
+  "triggers": {
+    "keywords": [
+      "pro",
+      "max",
+      "uiuxpromax"
+    ],
+    "slash_commands": [
+      "/UIUXProMax"
+    ],
+    "intent_patterns": [
+      "execute uiuxpromax",
+      "run uiuxpromax workflow",
+      "orchestrate instruments"
+    ]
+  },
+  "capabilities": [
+    "instruments",
+    "friction-budgets",
+    "the-reversibility-rule",
+    "state-persistence",
+    "global-ontology",
+    "gestalt-bounding",
+    "latency-budgets",
+    "typography-governance-suite",
+    "rendered-dom-geometry-auditor"
+  ],
+  "entry_points": {
+    "main_script": "scripts/core.py",
+    "cli": ""
+  },
+  "mcp_transport": "native",
+  "requires_cdp": false
+}
